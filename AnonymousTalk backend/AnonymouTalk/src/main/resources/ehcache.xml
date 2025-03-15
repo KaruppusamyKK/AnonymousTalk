@@ -1,0 +1,19 @@
+<config xmlns="http://www.ehcache.org/v3"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core-3.0.xsd">
+
+    <cache alias="chatCache">
+        <key-type>java.lang.String</key-type>  <!-- Room ID as key -->
+        <value-type>java.util.List</value-type>  <!-- Store list of messages -->
+
+        <expiry>
+            <ttl unit="minutes">60</ttl>  <!-- Messages expire after 60 minutes -->
+        </expiry>
+
+        <resources>
+            <heap unit="entries">500</heap>  <!-- Cache up to 1000 chat rooms -->
+            <offheap unit="MB">128</offheap>  <!-- Allocate 500MB for caching -->
+        </resources>
+    </cache>
+
+</config>
